@@ -1,0 +1,686 @@
+@import 'bourbon'; // http://bourbon.io/
+
+@import '../partials/variables'; // colors, fonts etc...
+
+@import '../partials/mixins'; // custom mixins
+
+@import '../partials/layout'; // responsive grid and media queries
+
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+
+*, *::after, *::before {
+	@include box-sizing(border-box);
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font: {
+		size: 1.6rem;
+		family: $primary-font; // variables inside partials > _variables.scss
+	}
+	color: $color-1;
+	background-color: darken($color-3, 5%);
+}
+
+a {
+	color: $color-2;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+
+.cd-header {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: $header-S; // variables inside partials > _variables.scss
+	background-color: darken($color-1, 5%);
+	@include font-smoothing; // see partials > _mixins.scss
+
+	@include MQ(M) {
+		height: $header-M;
+		background-color: transparent;
+	}
+}
+
+#cd-logo {
+	float: left;
+	margin: 13px 0 0 5%;
+
+	img {
+		display: block;
+	}
+
+	@include MQ(M) {
+		margin: 23px 0 0 5%;
+	}
+}
+
+.cd-primary-nav {
+	/* mobile first - navigation hidden by default, triggered by tap/click on navigation icon */
+	float: right;
+	margin-right: 5%;
+	width: 44px;
+	height: 100%;
+	background: url('../assets/cd-icon-menu.svg') no-repeat center center;
+
+	ul {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		@include transform(translateY(-100%));
+
+		&.is-visible {
+			box-shadow: 0 3px 8px rgba(#000, .2);
+			@include transform(translateY($header-S));
+		}
+	}
+
+	a {
+		display: block;
+		height: $header-S;
+		line-height: $header-S;
+		padding-left: 5%;
+		background: darken($color-1, 5%);
+		border-top: 1px solid lighten($color-1, 3%);
+		color: $color-3;
+	}
+
+	@include MQ(M) {
+		/* reset navigation values */
+		width: auto;
+		height: auto;
+		background: none;
+
+		ul {
+			position: static;
+			width: auto;
+			@include transform(translateY(0));
+			line-height: $header-M;
+
+			&.is-visible {
+				@include transform(translateY(0));
+			}
+		}
+
+		li {
+			display: inline-block;
+			margin-left: 1em;
+		}
+
+		a {
+			display: inline-block;
+			height: auto;
+			font-weight: 600;
+			line-height: normal;
+			background: transparent;
+			padding: .6em 1em;
+			border-top: none;
+		}
+	}
+}
+
+/* -------------------------------- 
+
+Slider
+
+-------------------------------- */
+
+.cd-hero {
+	position: relative;
+	@include font-smoothing;
+}
+
+.cd-hero-slider {
+	position: relative;
+	height: $intro-height-S;
+	overflow: hidden;
+	
+	li {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@include transform(translateX(100%));
+
+		&.selected {
+			/* this is the visible slide */
+			position: relative;
+			@include transform(translateX(0));
+		}
+
+		&.move-left {
+			/* slide hidden on the left */
+			@include transform(translateX(-100%));
+		}
+
+		&.is-moving,
+		&.selected {
+			/* the is-moving class is assigned to the slide which is moving outside the viewport */
+			@include transition(transform .5s);
+		}
+	}
+
+	@include MQ(M) {
+		height: $intro-height-M;
+	}
+
+	@include MQ(L) {
+		height: $intro-height-L;
+	}
+}
+
+/* -------------------------------- 
+
+Single slide style
+
+-------------------------------- */
+
+.cd-hero-slider {
+
+	li {
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat; 
+	}
+
+	li:first-of-type {
+		background-color: $color-1;
+	}
+
+	li:nth-of-type(2) {
+	 	background-color: lighten($color-1, 8%);
+	 	background-image: url('../assets/tech-1-mobile.jpg');
+	}
+
+	li:nth-of-type(3) {
+	 	background-color: lighten($color-1, 20%);
+	 	background-image: url('../assets/tech-2-mobile.jpg');
+	}
+
+	li:nth-of-type(4) {
+	 	background-color: $color-1;
+	 	background-image: url('../assets/video-replace-mobile.jpg');
+	}
+
+	li:nth-of-type(5) {
+	 	background-color: $color-1;
+	 	background-image: url(../assets/img.jpg);
+	}
+
+	.cd-full-width, 
+	.cd-half-width {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		/* this padding is used to align the text */
+		padding-top: 100px;
+		text-align: center;
+		
+		/* Force Hardware Acceleration in WebKit */
+		@include backface-visibility(hidden);
+		@include transform(translateZ(0));
+	}
+
+	.cd-img-container {
+		/* hide image on mobile device */
+		display: none;
+
+		img {
+			position: absolute;
+			@include center;
+		}
+	}
+
+	.cd-bg-video-wrapper {
+		/* hide video on mobile device */
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		video {
+			/* you won't see this element in the html, but it will be injected using js */
+			display: block;
+			min-height: 100%;
+			min-width: 100%;
+			max-width: none;
+			height: auto;
+			width: auto;
+			position: absolute;
+			@include center;
+		}
+	}
+
+	h2, p {
+		text-shadow: 0 1px 3px rgba(#000, .1);
+		line-height: 1.2;
+		margin: 0 auto 14px;
+		color: $color-3;
+		width: 90%;
+		max-width: 400px;
+	}
+
+	h2 {
+		font-size: 2.4rem;
+	}
+
+	p {
+		font-size: 1.4rem;
+		line-height: 1.4;
+	}
+
+	.cd-btn {
+		display: inline-block;
+		padding: 1.2em 1.4em;
+		margin-top: .8em;
+		background-color: rgba($color-2, .9);
+		font-size: 1.3rem;
+		font-weight: 700;
+		letter-spacing: 1px;
+		color: $color-3;
+		text-transform: uppercase;
+		box-shadow: 0 3px 6px rgba(#000, .1);
+		@include transition(background-color .2s);
+
+		&.secondary {
+			background-color: rgba(darken($color-1, 10%), .8);
+		}
+
+		&:nth-of-type(2) {
+			margin-left: 1em;
+		}
+
+		.no-touch &:hover {
+			background-color: $color-2;
+		}
+
+		.no-touch &.secondary:hover {
+			background-color: darken($color-1, 10%);
+		}
+	}
+
+	@include MQ(M) {
+
+		li:nth-of-type(2) {
+		 	background-image: none;
+		}
+
+		li:nth-of-type(3) {
+		 	background-image: none;
+		}
+
+		li:nth-of-type(4) {
+		 	background-image: none;
+		}
+
+		.cd-full-width, 
+		.cd-half-width {
+			padding-top: 150px;
+		}
+
+		.cd-bg-video-wrapper {
+			display: block;
+		}
+
+		.cd-half-width {
+			width: 45%;
+
+			&:first-of-type {
+				left: 5%;
+			}
+
+			&:nth-of-type(2) {
+				right: 5%;
+				left: auto;
+			}
+		}
+
+		.cd-img-container {
+			display: block;
+		}
+
+		h2, p {
+			max-width: 520px;
+		}
+
+		h2 {
+			font-size: 2.4em;
+			font-weight: 300;
+		}
+
+		.cd-btn {
+			font-size: 1.4rem;
+		}
+	}
+
+	@include MQ(L) {
+
+		.cd-full-width, 
+		.cd-half-width {
+			padding-top: 220px;
+		}
+
+		h2, p {
+			margin-bottom: 20px;
+		}
+
+		h2 {
+			font-size: 3.2em;
+		}
+
+		p {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+/* -------------------------------- 
+
+Single slide animation
+
+-------------------------------- */
+
+@include MQ(M) {
+	.cd-hero-slider {
+		
+		.cd-half-width {
+			opacity: 0;
+			@include transform(translateX(40px));
+		}
+
+		.move-left .cd-half-width {
+			@include transform(translateX(-40px));
+		}
+
+		.selected .cd-half-width {
+			/* this is the visible slide */
+			opacity: 1;
+			@include transform(translateX(0));
+		}
+		
+		.is-moving .cd-half-width {
+			/* this is the slide moving outside the viewport 
+			wait for the end of the transition on the <li> parent before set opacity to 0 and translate to 40px/-40px */
+			@include transition(opacity 0s .5s, transform 0s .5s);
+		}
+
+		li.selected.from-left .cd-half-width:nth-of-type(2),
+		li.selected.from-right .cd-half-width:first-of-type {
+			/* this is the selected slide - different animation if it's entering from left or right */
+			@include transition(opacity .4s .2s, transform .5s .2s);
+		}
+
+		li.selected.from-left .cd-half-width:first-of-type,
+		li.selected.from-right .cd-half-width:nth-of-type(2) {
+			/* this is the selected slide - different animation if it's entering from left or right */
+			@include transition(opacity .4s .4s, transform .5s .4s);
+		}
+
+		.cd-full-width h2, 
+		.cd-full-width p,
+		.cd-full-width .cd-btn {
+			opacity: 0;
+			@include transform(translateX(100px));
+		}
+
+		.move-left .cd-full-width h2, 
+		.move-left .cd-full-width p,
+		.move-left .cd-full-width .cd-btn {
+			opacity: 0;
+			@include transform(translateX(-100px));
+		}
+
+		.selected .cd-full-width h2, 
+		.selected .cd-full-width p,
+		.selected .cd-full-width .cd-btn {
+			/* this is the visible slide */
+			opacity: 1;
+			@include transform(translateX(0));
+		}
+
+		li.is-moving .cd-full-width h2, 
+		li.is-moving .cd-full-width p,
+		li.is-moving .cd-full-width .cd-btn {
+			/* this is the slide moving outside the viewport 
+			wait for the end of the transition on the li parent before set opacity to 0 and translate to 100px/-100px */
+			@include transition(opacity 0s .5s, transform 0s .5s);
+		}
+
+		li.selected h2 {
+			@include transition(opacity .4s .2s, transform .5s .2s);
+		}
+
+		li.selected p {
+			@include transition(opacity .4s .3s, transform .5s .3s);
+		}
+
+		li.selected .cd-btn {
+			@include transition(opacity .4s .4s, transform .5s .4s, background-color .2s 0s);
+		}
+	}
+}
+
+/* -------------------------------- 
+
+Slider navigation
+
+-------------------------------- */
+
+.cd-slider-nav {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	z-index: 2;
+	text-align: center;
+	height: 55px;
+	background-color: rgba(darken($color-1, 20%), .5);
+
+	nav, ul, li, a {
+		height: 100%;
+	}
+
+	nav {
+		display: inline-block;	
+		position: relative;
+	}
+
+	.cd-marker {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 60px;
+		height: 100%;
+		color: $color-2;
+		background-color: $color-3;
+		box-shadow: inset 0 2px 0 currentColor;
+		@include transition(transform .2s, box-shadow .2s);
+
+		&.item-2 {
+			@include transform(translateX(100%));
+		}
+
+		&.item-3 {
+			@include transform(translateX(200%));
+		}
+
+		&.item-4 {
+			@include transform(translateX(300%));
+		}
+
+		&.item-5 {
+			@include transform(translateX(400%));
+		}
+	}
+
+	ul {
+		@include clearfix;
+	}
+
+	li {
+		display: inline-block;
+		width: 60px;
+		float: left;
+
+		&.selected a {
+			color: $color-1;
+
+			.no-touch &:hover {
+				background-color: transparent;
+			}
+		}
+	}
+
+	a {
+		display: block;
+		position: relative;
+		padding-top: 35px;
+		font-size: 1rem;
+		font-weight: 700;
+		color: lighten($color-1, 50%);
+		@include transition(background-color .2s);
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			top: 8px;
+			@include center(x);
+			background: url(../assets/cd-icon-navigation.svg) no-repeat 0 0;
+		}
+
+		.no-touch &:hover {
+			background-color: rgba(darken($color-1, 20%), .5);
+		}
+	}
+
+	li:first-of-type a::before {
+		background-position: 0 0;
+	}
+
+	li.selected:first-of-type a::before {
+		background-position: 0 -24px;
+	}
+
+	li:nth-of-type(2) a::before {
+		background-position: -24px 0;
+	}
+
+	li.selected:nth-of-type(2) a::before {
+		background-position: -24px -24px;
+	}
+
+	li:nth-of-type(3) a::before {
+		background-position: -48px 0;
+	}
+
+	li.selected:nth-of-type(3) a::before {
+		background-position: -48px -24px;
+	}
+
+	li:nth-of-type(4) a::before {
+		background-position: -72px 0;
+	}
+
+	li.selected:nth-of-type(4) a::before {
+		background-position: -72px -24px;
+	}
+
+	li:nth-of-type(5) a::before {
+		background-position: -96px 0;
+	}
+
+	li.selected:nth-of-type(5) a::before {
+		background-position: -96px -24px;
+	}
+
+	@include MQ(M) {
+		height: 80px;
+
+		.cd-marker, 
+		li {
+			width: 95px;
+		}
+
+		a {
+			padding-top: 48px;
+			font-size: 1.1rem;
+			text-transform: uppercase;
+
+			&::before {
+				top: 18px;
+			}
+		}
+	}
+}
+
+/* -------------------------------- 
+
+Main content
+
+-------------------------------- */
+
+.cd-main-content {
+	width: 90%;
+	max-width: $M;
+	margin: 0 auto;
+	padding: 2em 0;
+
+	p {
+		font-size: 1.4rem;
+		line-height: 1.8;
+		color: darken($color-3, 40%);
+		margin: 2em 0;
+	}
+
+	@include MQ(L) {
+		padding: 3em 0;
+		
+		p {
+			font-size: 1.6rem;
+		}
+	}
+}
+
+/* -------------------------------- 
+
+Javascript disabled
+
+-------------------------------- */
+.no-js .cd-hero-slider li {
+	display: none;
+
+	&.selected {
+		display: block;
+	}
+}
+
+.no-js .cd-slider-nav {
+	display: none;
+}

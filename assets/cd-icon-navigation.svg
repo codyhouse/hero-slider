@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="120px" height="48px" viewBox="0 0 120 48" enable-background="new 0 0 120 48" xml:space="preserve">
+<g>
+	<polygon fill="#FFFFFF" points="2,9.6 2,24 9,24 9,17 15,17 15,24 22,24 22,9.6 12,0.7 	"/>
+</g>
+<rect x="77" y="20" fill="#FFFFFF" width="14" height="2"/>
+<rect x="77" y="44" fill="#D44457" width="14" height="2"/>
+<path fill="#FFFFFF" d="M72,2v16h24V2H72z M81,15V5l6.7,5L81,15z"/>
+<g>
+	<path fill="#FFFFFF" d="M46,8h-6c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2h6c1.1,0,2-0.9,2-2V10C48,8.9,47.1,8,46,8z M46,20h-6V10h6V20
+		z"/>
+	<path fill="#FFFFFF" d="M36,15h-6V3h14v3h2c0.3,0,0.7,0.1,1,0.1V2c0-1.1-0.9-2-2-2H26c-1.1,0-2,0.9-2,2v14c0,1.1,0.9,2,2,2h10V15z
+		 M28,11h-2V7h2V11z"/>
+</g>
+<g>
+	<path fill="#FFFFFF" d="M96,1v22h24V1H96z M118,3v9.9l-5.1-4.3l-6,7l-4.9-3.9l-4,3.2V3H118z"/>
+	<circle fill="#FFFFFF" cx="106" cy="8" r="3"/>
+</g>
+<g>
+	<polygon fill="#D44457" points="2,33.6 2,48 9,48 9,41 15,41 15,48 22,48 22,33.6 12,24.7 	"/>
+</g>
+<path fill="#D44457" d="M72,26v16h24V26H72z M81,39V29l6.7,5L81,39z"/>
+<g>
+	<path fill="#D44457" d="M46,32h-6c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2h6c1.1,0,2-0.9,2-2V34C48,32.9,47.1,32,46,32z M46,44h-6V34
+		h6V44z"/>
+	<path fill="#D44457" d="M36,39h-6V27h14v3h2c0.3,0,0.7,0.1,1,0.1V26c0-1.1-0.9-2-2-2H26c-1.1,0-2,0.9-2,2v14c0,1.1,0.9,2,2,2h10V39
+		z M28,35h-2v-4h2V35z"/>
+</g>
+<g>
+	<path fill="#D44457" d="M96,25v22h24V25H96z M118,27v9.9l-5.1-4.3l-6,7l-4.9-3.9l-4,3.2V27H118z"/>
+	<circle fill="#D44457" cx="106" cy="32" r="3"/>
+</g>
+<g>
+	<path fill="#FFFFFF" d="M72,19V1H48v18h9v2h-4v2h4h6h4v-2h-4v-2H72z M51,16V4h18v12H51z"/>
+</g>
+<g>
+	<path fill="#D44457" d="M72,43V25H48v18h9v2h-4v2h4h6h4v-2h-4v-2H72z M51,40V28h18v12H51z"/>
+</g>
+</svg>
