@@ -63,6 +63,8 @@ jQuery(document).ready(function($){
 				var	videoUrl = videoWrapper.data('video'),
 					video = $('<video loop><source src="'+videoUrl+'.mp4" type="video/mp4" /><source src="'+videoUrl+'.webm" type="video/webm" /></video>');
 				video.appendTo(videoWrapper);
+
+				if(videoWrapper.parents('.cd-bg-video.selected').length > 0) video.get(0).play();
 			}
 		});
 	}
