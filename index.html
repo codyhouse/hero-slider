@@ -4,99 +4,98 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="stylesheet" href="css/demo.css"> <!-- Demo style -->
   	
 	<title>Hero Slideshow</title>
 </head>
 <body>
 	<header class="cd-header">
-		<div id="cd-logo"><a href="#0"><img src="assets/cd-logo.svg" alt="Logo"></a></div>
-
-		<nav class="cd-primary-nav">
+		<div class="cd-header__logo"><a href="#0"><img src="assets/cd-logo.svg" alt="Logo"></a></div>
+		<nav class="cd-header__nav js-cd-header__nav">
 			<ul>
 				<li><a href="#0">Home</a></li>
 				<li><a href="#0">Portfolio</a></li>
 				<li><a href="#0">Contact</a></li>
 			</ul>
-		</nav> <!-- .cd-primary-nav -->
+		</nav> <!-- .cd-header__nav -->
 	</header>
 
-	<section class="cd-hero">
-		<ul class="cd-hero-slider">
-			<li class="selected">
-				<div class="cd-full-width">
+	<section class="cd-hero js-cd-hero js-cd-autoplay">
+		<ul class="cd-hero__slider">
+			<li class="cd-hero__slide cd-hero__slide--selected js-cd-slide">
+				<div class="cd-hero__content cd-hero__content--full-width">
 					<h2>Hero slider</h2>
-					<p>A simple, responsive slideshow in CSS &amp; jQuery.</p>
-					<a href="http://codyhouse.co/?p=675" class="cd-btn">Article &amp; Download</a>
-				</div> <!-- .cd-full-width -->
+					<p>A simple, responsive slideshow in CSS &amp; JavaScript.</p>
+					<a href="http://codyhouse.co/gem/hero-slider/" class="cd-hero__btn">Article &amp; Download</a>
+				</div> <!-- .cd-hero__content -->
 			</li>
 
-			<li>
-				<div class="cd-half-width">
+			<li class="cd-hero__slide js-cd-slide">
+				<div class="cd-hero__content cd-hero__content--half-width">
 					<h2>Slide title here</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</p>
-					<a href="#0" class="cd-btn">Start</a>
-					<a href="#0" class="cd-btn secondary">Learn More</a>
-				</div> <!-- .cd-half-width -->
+					<a href="#0" class="cd-hero__btn">Start</a>
+					<a href="#0" class="cd-hero__btn cd-hero__btn--secondary">Learn More</a>
+				</div> <!-- .cd-hero__content -->
 
-				<div class="cd-half-width cd-img-container">
+				<div class="cd-hero__content cd-hero__content--half-width cd-hero__content--img">
 					<img src="assets/tech-1.jpg" alt="tech 1">
-				</div> <!-- .cd-half-width.cd-img-container -->
+				</div> <!-- .cd-hero__content -->
 			</li>
 
-			<li>
-				<div class="cd-half-width cd-img-container">
+			<li class="cd-hero__slide js-cd-slide">
+				<div class="cd-hero__content cd-hero__content--half-width cd-hero__content--img">
 					<img src="assets/tech-2.jpg" alt="tech 2">
-				</div> <!-- .cd-half-width.cd-img-container -->
+				</div> <!-- .cd-hero__content -->
 
-				<div class="cd-half-width">
+				<div class="cd-hero__content cd-hero__content--half-width">
 					<h2>Slide title here</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</p>
-					<a href="#0" class="cd-btn">Start</a>
-					<a href="#0" class="cd-btn secondary">Learn More</a>
-				</div> <!-- .cd-half-width -->
+					<a href="#0" class="cd-hero__btn">Start</a>
+					<a href="#0" class="cd-hero__btn cd-hero__btn--secondary">Learn More</a>
+				</div> <!-- .cd-hero__content -->
 				
 			</li>
 
-			<li class="cd-bg-video">
-				<div class="cd-full-width">
+			<li class="cd-hero__slide cd-hero__slide--video js-cd-slide">
+				<div class="cd-hero__content cd-hero__content--full-width">
 					<h2>Slide title here</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, explicabo.</p>
-					<a href="#0" class="cd-btn">Learn more</a>
-				</div> <!-- .cd-full-width -->
+					<a href="#0" class="cd-hero__btn">Learn more</a>
+				</div> <!-- .cd-hero__content -->
 
-				<div class="cd-bg-video-wrapper" data-video="assets/video/video">
-					<!-- video element will be loaded using jQuery -->
-				</div> <!-- .cd-bg-video-wrapper -->
+				<div class="cd-hero__content cd-hero__content--bg-video js-cd-bg-video" data-video="assets/video/video">
+					<!-- video element will be loaded using JavaScript -->
+				</div> <!-- .cd-hero__content -->
 			</li>
 
-			<li>
-				<div class="cd-full-width">
+			<li class="cd-hero__slide js-cd-slide">
+				<div class="cd-hero__content cd-hero__content--full-width">
 					<h2>Slide title here</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, explicabo.</p>
-					<a href="#0" class="cd-btn">Start</a>
-					<a href="#0" class="cd-btn secondary">Learn More</a>
-				</div> <!-- .cd-full-width -->
+					<a href="#0" class="cd-hero__btn">Start</a>
+					<a href="#0" class="cd-hero__btn cd-hero__btn--secondary">Learn More</a>
+				</div> <!-- .cd-hero__content -->
 			</li>
-		</ul> <!-- .cd-hero-slider -->
+		</ul> <!-- .cd-hero__slider -->
 
-		<div class="cd-slider-nav">
+		<div class="cd-hero__nav js-cd-nav">
 			<nav>
-				<span class="cd-marker item-1"></span>
+				<span class="cd-hero__marker cd-hero__marker--item-1 js-cd-marker"></span>
 				
 				<ul>
-					<li class="selected"><a href="#0">Intro</a></li>
+					<li class="cd-selected"><a href="#0">Intro</a></li>
 					<li><a href="#0">Tech 1</a></li>
 					<li><a href="#0">Tech 2</a></li>
 					<li><a href="#0">Video</a></li>
 					<li><a href="#0">Image</a></li>
 				</ul>
 			</nav> 
-		</div> <!-- .cd-slider-nav -->
+		</div> <!-- .cd-hero__nav -->
 	</section> <!-- .cd-hero -->
 
 	<main class="cd-main-content">
@@ -109,8 +108,7 @@
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam quisquam, rem illum dicta cumque, voluptate fugiat impedit beatae rerum ratione, voluptates nisi magni delectus ab, eaque atque iste. Molestias incidunt nemo veniam alias nam nisi distinctio optio error architecto odit! Illo dicta nulla fugiat distinctio laudantium, corrupti eum unde.
 		</p>
 	</main> <!-- .cd-main-content -->
-	
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
+
+	<script src="js/main.js"></script> <!-- Resource JavaScrip -->
 </body>
 </html>
