@@ -1,7 +1,8 @@
 (function(){
 	//remove no-js class
-	removeClass(document.getElementsByTagName("html")[0], "no-js");
+    removeClass(document.getElementsByTagName("html")[0], "no-js"); 
 
+    //Hero Slider - by CodyHouse.co
 	function HeroSlider( element ) {
 		this.element = element;
 		this.navigation = this.element.getElementsByClassName("js-cd-nav")[0];
