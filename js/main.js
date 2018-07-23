@@ -143,7 +143,8 @@
 	//on mobile - open/close primary navigation clicking/tapping the menu icon 
 	document.getElementsByClassName('js-cd-header__nav')[0].addEventListener('click', function(event){
 		if(event.target.tagName.toLowerCase() == 'nav') {
-			classie.toggleClass(this.getElementsByTagName('ul')[0], 'cd-is-visible');
+			var dropdown = this.getElementsByTagName('ul')[0];
+			toggleClass(dropdown, 'cd-is-visible', !hasClass(dropdown, 'cd-is-visible'));
 		}
 	});
 
@@ -174,5 +175,9 @@
 	  		el.className=el.className.replace(reg, ' ');
 	  	}
 	  	if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
+	}
+	function toggleClass(el, className, bool) {
+		if(bool) addClass(el, className);
+		else removeClass(el, className);
 	}
 })();
